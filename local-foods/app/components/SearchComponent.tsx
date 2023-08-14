@@ -3,12 +3,12 @@ import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 import { IFoodList } from "../interfaces/foodTypes";
 
-
 export default function SearchComponent({
-  setFoodList, setLocation,
+  setFoodList,
+  setLocation,
 }: {
   setFoodList: Dispatch<SetStateAction<IFoodList>>;
-  setLocation: Dispatch<SetStateAction<string>>
+  setLocation: Dispatch<SetStateAction<string>>;
 }) {
   const [locationInput, setLocationInput] = useState("");
 
@@ -30,7 +30,7 @@ export default function SearchComponent({
           new Error(`Request failed with status ${response.status}`)
         );
       }
-      let foodList : IFoodList = JSON.parse(data.result)
+      let foodList: IFoodList = JSON.parse(data.result);
       setFoodList(foodList);
       setLocation(locationInput);
       setLocationInput("");
@@ -42,7 +42,7 @@ export default function SearchComponent({
   }
 
   return (
-    <main>
+    <div>
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -50,9 +50,16 @@ export default function SearchComponent({
           placeholder="Enter a location"
           value={locationInput}
           onChange={(e) => setLocationInput(e.target.value)}
+          required
+          className="rounded-lg bg-white border-2 border-black p-3 w-full"
         />
-        <input type="submit" value="Generate names" />
+        <button
+          type="submit"
+          className="rounded-lg text-white bg-black p-1.5 w-full mt-2 hover:bg-blue-300"
+        >
+          Find Foods
+        </button>
       </form>
-    </main>
+    </div>
   );
 }

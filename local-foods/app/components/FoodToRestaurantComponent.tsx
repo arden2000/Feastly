@@ -9,8 +9,8 @@ export default function FoodToRestaurantComponent({
   foodList: IFoodList;
 }) {
   return (
-    <main>
+    <div>
       <FoodListComponent foodList={foodList} />
-    </main>
+    </div>
   );
 }
