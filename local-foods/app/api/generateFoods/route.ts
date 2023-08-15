@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "user",
-          content: `List the 2 ten local foods of ${location} with less than 5 word description as JSON using the following format:
+          content: `List the 2 ten local foods of ${location} with about a 15 word description as JSON using the following format:
           {local_foods: [{"name": name}, "description": description]}`,
         },
       ],

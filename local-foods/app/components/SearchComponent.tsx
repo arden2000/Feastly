@@ -55,7 +55,7 @@ export default function SearchComponent({
         />
         <button
           type="submit"
-          className="rounded-lg text-white bg-black p-1.5 w-full mt-2 hover:bg-blue-300"
+          className="rounded-lg text-white bg-black p-1.5 w-full mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black"
         >
           Find Foods
         </button>

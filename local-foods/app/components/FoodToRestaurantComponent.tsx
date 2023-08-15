@@ -10,7 +10,10 @@ export default function FoodToRestaurantComponent({
 }) {
   return (
     <div>
-      <FoodListComponent foodList={foodList} />
+      <div className="flex flex-row justify-evenly">
+        <FoodListComponent foodList={foodList} />
+        <FoodListComponent foodList={foodList} />
+      </div>
     </div>
   );
 }
