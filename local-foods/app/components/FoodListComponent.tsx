@@ -11,7 +11,7 @@ export default function FoodListComponent({
   setSelectedFood: Dispatch<SetStateAction<string>>;
 }) {
   return (
-    <div className="flex flex-col justify-center gap-y-6 w-1/3">
+    <div className="flex flex-col justify-start gap-y-6 w-1/3">
       {foodList.map((food: IFoodInfo) => (
         <FoodBoxComponent foodInfo={food} setSelectedFood={setSelectedFood} />
       ))}

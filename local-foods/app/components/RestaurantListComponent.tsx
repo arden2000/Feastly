@@ -1,8 +1,9 @@
 "use client";
 import RestaurantBoxComponent from "./RestaurantBoxComponent";
 import { ILocationInfo } from "../interfaces/types";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Libraries } from "@react-google-maps/api";
 import { useMemo, useState, useEffect } from "react";
+const libraries: Libraries = ["places"];
 
 export default function RestaurantListComponent({
   selectedFood,
@@ -21,7 +22,7 @@ export default function RestaurantListComponent({
     googleMapsApiKey:
       process.env.GOOGLE_MAPS_API_KEY ||
       "",
-    libraries: ["places"],
+    libraries,
   });
 
   useEffect(() => {
@@ -52,18 +53,16 @@ export default function RestaurantListComponent({
   }, [selectedFood, map]);
 
   return (
-    <div className="flex flex-col justify-center gap-y-6 w-1/3">
-      restaurants
-      {isLoaded ? (
-        <GoogleMap zoom={10} center={center} onLoad={(map) => setMap(map)}>
-          <Marker position={center} />
-        </GoogleMap>
-      ) : (
-        "Not loaded map"
-      )}
+    <div className="flex flex-col justify-start gap-y-6 w-1/3">
+      
       {restaurants.map((restaurant: google.maps.places.PlaceResult) => (
         <RestaurantBoxComponent restaurantInfo={restaurant} />
       ))}
+      {isLoaded ? (
+        <GoogleMap zoom={10} center={center} onLoad={(map) => setMap(map)} />
+      ) : (
+        "Not loaded map"
+      )}
     </div>
   );
 }

@@ -1,9 +1,8 @@
 "use client";
 import FoodListComponent from "./FoodListComponent";
 import RestaurantListComponent from "./RestaurantListComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IFoodInfo, ILocationInfo } from "../interfaces/types";
-
 
 export default function FoodToRestaurantComponent({
   foodList,
@@ -13,9 +12,14 @@ export default function FoodToRestaurantComponent({
   locationInfo: ILocationInfo;
 }) {
   const [selectedFood, setSelectedFood] = useState("");
+
+  useEffect(() => {
+    setSelectedFood("");
+  }, [locationInfo]);
+
   return (
     <div>
-      <div className="flex flex-row justify-evenly">
+      <div className="flex flex-row justify-evenly mt-20">
         <FoodListComponent
           foodList={foodList}
           setSelectedFood={setSelectedFood}
