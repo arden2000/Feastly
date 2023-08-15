@@ -2,18 +2,17 @@
 import FoodListComponent from "./FoodListComponent";
 import RestaurantListComponent from "./RestaurantListComponent";
 import { useState } from "react";
-import { IFoodList } from "../interfaces/foodTypes";
+import { IFoodInfo, ILocationInfo } from "../interfaces/types";
 
 
 export default function FoodToRestaurantComponent({
   foodList,
-  location,
+  locationInfo,
 }: {
-  foodList: IFoodList;
-  location: string;
+  foodList: Array<IFoodInfo>;
+  locationInfo: ILocationInfo;
 }) {
   const [selectedFood, setSelectedFood] = useState("");
-  const searchedLocation = location + "";
   return (
     <div>
       <div className="flex flex-row justify-evenly">
@@ -24,7 +23,7 @@ export default function FoodToRestaurantComponent({
         {selectedFood != "" ? (
           <RestaurantListComponent
             selectedFood={selectedFood}
-            location={searchedLocation}
+            locationInfo={locationInfo}
           />
         ) : null}
       </div>

@@ -1,16 +1,15 @@
 "use client";
 import RestaurantBoxComponent from "./RestaurantBoxComponent";
-import { IFoodInfo } from "../interfaces/foodTypes";
-import { IFoodList } from "../interfaces/foodTypes";
+import { ILocationInfo } from "../interfaces/types";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { useMemo, useState, useEffect } from "react";
 
 export default function RestaurantListComponent({
   selectedFood,
-  location,
+  locationInfo,
 }: {
   selectedFood: string;
-  location: string;
+  locationInfo: ILocationInfo;
 }) {
   const [restaurants, setRestaurants] = useState<
     google.maps.places.PlaceResult[]
@@ -33,7 +32,10 @@ export default function RestaurantListComponent({
       let request = {
         keyword: `${selectedFood}`,
         // fields: ["name", "formatted_address"],
-        location: new google.maps.LatLng(41.9028, 12.4964),
+        location: new google.maps.LatLng(
+          locationInfo.coordinates.lat,
+          locationInfo.coordinates.lng
+        ),
         radius: 25000,
       };
 
@@ -51,9 +53,6 @@ export default function RestaurantListComponent({
 
   return (
     <div className="flex flex-col justify-center gap-y-6 w-1/3">
-      {/* {foodList.local_foods.map((food: IFoodInfo) => (
-        <FoodBoxComponent foodInfo={food} />
-      ))} */}
       restaurants
       {isLoaded ? (
         <GoogleMap zoom={10} center={center} onLoad={(map) => setMap(map)}>

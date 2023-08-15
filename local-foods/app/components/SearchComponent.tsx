@@ -1,14 +1,14 @@
 "use client";
 import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
-import { IFoodList } from "../interfaces/foodTypes";
+import { IGptResponse, IFoodInfo, ILocationInfo } from "../interfaces/types";
 
 export default function SearchComponent({
   setFoodList,
-  setLocation,
+  setLocationInfo,
 }: {
-  setFoodList: Dispatch<SetStateAction<IFoodList>>;
-  setLocation: Dispatch<SetStateAction<string>>;
+  setFoodList: Dispatch<SetStateAction<Array<IFoodInfo>>>;
+  setLocationInfo: Dispatch<SetStateAction<ILocationInfo | undefined>>;
 }) {
   const [locationInput, setLocationInput] = useState("");
 
@@ -30,9 +30,13 @@ export default function SearchComponent({
           new Error(`Request failed with status ${response.status}`)
         );
       }
-      let foodList: IFoodList = JSON.parse(data.result);
-      setFoodList(foodList);
-      setLocation(locationInput);
+      console.log(data.result);
+      let gptResponse: IGptResponse = JSON.parse(data.result);
+      setFoodList(gptResponse.local_foods);
+      setLocationInfo({
+        name: locationInput,
+        coordinates: gptResponse.coordinates,
+      });
       setLocationInput("");
     } catch (error: any) {
       // Consider implementing your own error handling logic here
