@@ -4,39 +4,10 @@ import { useState, useMemo } from "react";
 import SearchComponent from "./components/SearchComponent";
 import FoodToRestaurantComponent from "./components/FoodToRestaurantComponent";
 import { IFoodList } from "./interfaces/foodTypes";
-import { Loader } from "@googlemaps/js-api-loader";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 export default function Home() {
   const [location, setLocation] = useState("");
   const [foodList, setFoodList] = useState<IFoodList>({ local_foods: [] });
-  const center = useMemo(() => ({ lat: 44, lng: -80 }), []);
-  const libraries = ["places"];
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || "",
-    libraries: libraries,
-  });
-  const onMapLoad = (map: google.maps.Map) => {
-    console.log("in map load");
-    console.log(map)
-
-    let request = {
-      keyword: "suppli ",
-      // fields: ["name", "formatted_address"],
-      location: new google.maps.LatLng(41.9028, 12.4964),
-      radius: 25000
-
-    };
-
-    let service = new google.maps.places.PlacesService(map);
-
-    service.nearbySearch(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        console.log("query success");
-        console.log(results);
-      }
-    });
-  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-evenly p-20 	">
@@ -52,19 +23,8 @@ export default function Home() {
       <SearchComponent setFoodList={setFoodList} setLocation={setLocation} />
 
       <div className="flex flex-col items-center justify-evenly">
-        <FoodToRestaurantComponent foodList={foodList} />
+        <FoodToRestaurantComponent foodList={foodList} location={location} />
         {/* <p>{JSON.stringify(foodList)}</p> */}
-        {isLoaded ? (
-          <GoogleMap
-            zoom={10}
-            center={center}
-            onLoad={(map) => onMapLoad(map)}
-          >
-            <Marker position={center} />
-          </GoogleMap>
-        ) : (
-          "Npt loaded map"
-        )}
       </div>
     </main>
   );
