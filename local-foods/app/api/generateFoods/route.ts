@@ -37,9 +37,23 @@ export async function POST(req: Request) {
       model: "gpt-3.5-turbo",
       messages: [
         {
+          role: 'system',
+          content: `
+          When a user gives you a location recommend 2  local foods from 
+          the location with a 1 sentence description. Include the coordinates 
+          of the user's location. Return as a JSON in the 
+          following format:
+          {
+          coordinates: {
+            lat: number,
+            lng: number
+          },
+          local_foods: [{name: name, description: description}]
+          } `
+        },
+        {
           role: "user",
-          content: `List the 2 ten local foods of ${location} with about a 15 word description as JSON using the following format:
-          {local_foods: [{"name": name}, "description": description]}`,
+          content: `${location}`,
         },
       ],
     });
