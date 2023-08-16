@@ -54,10 +54,14 @@ export default function RestaurantListComponent({
 
   return (
     <div className="flex flex-col justify-start gap-y-6 w-1/3">
-      
-      {restaurants.map((restaurant: google.maps.places.PlaceResult) => (
-        <RestaurantBoxComponent restaurantInfo={restaurant} />
-      ))}
+      {restaurants
+        // .filter((restaurant: google.maps.places.PlaceResult) => {
+        //   console.log(restaurant.rating)
+        //   restaurant.rating != undefined && restaurant.rating > 4;
+        // })
+        .map((restaurant: google.maps.places.PlaceResult) => (
+          <RestaurantBoxComponent key={restaurant.place_id} restaurantInfo={restaurant} />
+        ))}
       {isLoaded ? (
         <GoogleMap zoom={10} center={center} onLoad={(map) => setMap(map)} />
       ) : (

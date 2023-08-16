@@ -23,6 +23,7 @@ export default function FoodToRestaurantComponent({
         <FoodListComponent
           foodList={foodList}
           setSelectedFood={setSelectedFood}
+          selectedFood={selectedFood}
         />
         {selectedFood != "" ? (
           <RestaurantListComponent
