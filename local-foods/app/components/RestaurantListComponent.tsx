@@ -31,7 +31,7 @@ export default function RestaurantListComponent({
       console.log(map);
 
       let request = {
-        keyword: `${selectedFood}`,
+        keyword: `${selectedFood} restaurant`,
         // fields: ["name", "formatted_address"],
         location: new google.maps.LatLng(
           locationInfo.coordinates.lat,

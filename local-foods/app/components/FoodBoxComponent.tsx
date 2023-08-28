@@ -21,6 +21,33 @@ export default function FoodBoxComponent({
   //   setStyle("border");
   // }
 
+  const [foodImage, setFoodImage] = useState("/black_image.jpg");
+
+  const getFoodImage = async () => {
+    console.log("food image search");
+
+    const response = await fetch("/api/getImage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ foodName: foodInfo.name }),
+    });
+
+    const data = await response.json();
+    console.log(data.result.images_results)
+    setFoodImage(data.result.images_results[0].thumbnail)
+    if (response.status !== 200) {
+      throw (
+        data.error || new Error(`Request failed with status ${response.status}`)
+      );
+    }
+  };
+
+  useEffect(() => {
+    getFoodImage().catch(console.error);
+  }, []);
+
   return (
     <div
       onClick={() => setSelectedFood(foodInfo.name)}
@@ -30,7 +57,7 @@ export default function FoodBoxComponent({
           : "border"
       } rounded-lg p-4 hover:scale-105 hover:border-2`}
     >
-      <Image src="/black_image.jpg" alt="me" width="128" height="128" />
+      <Image src={foodImage} alt="me" width="128" height="128" />
       <div className="flex flex-col">
         <p className="text-lg font-medium">{foodInfo.name}</p>
         <p>{foodInfo.description}</p>
