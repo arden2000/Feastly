@@ -20,7 +20,7 @@ export default function SearchPage() {
                 // locationFromHome={(locationFromHome as string)}
                 />
             </div>
-            <div className="flex flex-col grow-0 h-full w-full shrink-0 mt-20">
+            <div className="flex flex-col grow-0 h-full items-center w-full shrink-0 mt-20">
                 {locationInfo != undefined ? (
                     <FoodToRestaurantComponent
                         foodList={foodList}

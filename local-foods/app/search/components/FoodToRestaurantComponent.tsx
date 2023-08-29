@@ -18,7 +18,7 @@ export default function FoodToRestaurantComponent({
   }, [locationInfo]);
 
   return (
-      <div className="flex flex-row grow-0 w-full justify-evenly mt-20">
+      <div className="flex flex-row grow-0 w-full mt-20 gap-x-32 justify-center">
         <FoodListComponent
           foodList={foodList}
           setSelectedFood={setSelectedFood}
