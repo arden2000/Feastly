@@ -1,26 +1,39 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
-import { IGptResponse, IFoodInfo, ILocationInfo } from "../interfaces/types";
+import { IGptResponse, IFoodInfo, ILocationInfo } from "../../interfaces/types";
+import { useSearchParams } from 'next/navigation'
 
 export default function SearchComponent({
   setFoodList,
   setLocationInfo,
+  setSearching
 }: {
   setFoodList: Dispatch<SetStateAction<Array<IFoodInfo>>>;
   setLocationInfo: Dispatch<SetStateAction<ILocationInfo | undefined>>;
+  setSearching: Dispatch<SetStateAction<boolean>>
 }) {
   const [locationInput, setLocationInput] = useState("");
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  const searchParams = useSearchParams()
+  
+  useEffect(() => {
+    if (searchParams.get('homeLocation') != '') {
+      const homeLocation = searchParams.get('homeLocation') as string
+      setLocationInput(homeLocation);
+      getGPTResponse(homeLocation).catch(console.error)
+    }
+  }, []);
+
+  const getGPTResponse = async (searchLocation : string) => {
+    setSearching(true);
     try {
       const response = await fetch("/api/generateFoods", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ location: locationInput }),
+        body: JSON.stringify({ location: searchLocation }),
       });
 
       const data = await response.json();
@@ -34,7 +47,7 @@ export default function SearchComponent({
       let gptResponse: IGptResponse = JSON.parse(data.result);
       setFoodList(gptResponse.local_foods);
       setLocationInfo({
-        name: locationInput,
+        name: searchLocation,
         coordinates: gptResponse.coordinates,
       });
       setLocationInput("");
@@ -42,7 +55,14 @@ export default function SearchComponent({
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
+    } finally {
+      setSearching(false)
     }
+  }
+
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    getGPTResponse(locationInput).catch(console.error)
   }
 
   return (

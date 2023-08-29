@@ -1,5 +1,5 @@
 "use client";
-import { IFoodInfo } from "../interfaces/types";
+import { IFoodInfo } from "../../interfaces/types";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 import { useState, useEffect } from "react";
