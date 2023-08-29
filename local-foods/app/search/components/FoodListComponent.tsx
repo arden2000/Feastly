@@ -1,6 +1,6 @@
 "use client";
 import FoodBoxComponent from "./FoodBoxComponent";
-import { IFoodInfo } from "../interfaces/types";
+import { IFoodInfo } from "../../interfaces/types";
 import { Dispatch, SetStateAction } from "react";
 
 export default function FoodListComponent({

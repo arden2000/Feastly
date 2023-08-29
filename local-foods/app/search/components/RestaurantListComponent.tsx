@@ -1,6 +1,6 @@
 "use client";
 import RestaurantBoxComponent from "./RestaurantBoxComponent";
-import { ILocationInfo } from "../interfaces/types";
+import { ILocationInfo } from "../../interfaces/types";
 import { GoogleMap, useLoadScript, Libraries } from "@react-google-maps/api";
 import { useMemo, useState, useEffect } from "react";
 const libraries: Libraries = ["places"];

@@ -2,7 +2,7 @@
 import FoodListComponent from "./FoodListComponent";
 import RestaurantListComponent from "./RestaurantListComponent";
 import { useEffect, useState } from "react";
-import { IFoodInfo, ILocationInfo } from "../interfaces/types";
+import { IFoodInfo, ILocationInfo } from "../../interfaces/types";
 
 export default function FoodToRestaurantComponent({
   foodList,
