@@ -21,7 +21,7 @@ export default function RestaurantListComponent({
   const { isLoaded } = useLoadScript({
     googleMapsApiKey:
       process.env.GOOGLE_MAPS_API_KEY ||
-      "",
+      "AIzaSyD3CyG687amROKI80LXyz1x4-8VBM5ytlk",
     libraries,
   });
 
