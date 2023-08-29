@@ -34,7 +34,7 @@ export default function FoodBoxComponent({
     });
 
     const data = await response.json();
-    console.log(data.result.items[0])
+    // console.log(data.result.items[0])
     setFoodImage(data.result.items[0].link)
 
     if (response.status !== 200) {
