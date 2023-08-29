@@ -6,7 +6,7 @@ export async function POST(req: Request) {
 
   const baseUrl = `https://maps.googleapis.com/maps/api/place/details/json?key=${process.env.GOOGLE_MAPS_API_KEY}`;
   const place = `&place_id=${placeId}`;
-  const fields = `&fields=url%2Cphoto`;
+  const fields = `&fields=url`;
 
   const response = await fetch(`${baseUrl}${place}${fields}`, {
     method: "GET",

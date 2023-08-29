@@ -16,7 +16,7 @@ export default function RestaurantBoxComponent({
     const response = await fetch("/api/restaurantPhoto", {
       method: "POST",
       body: JSON.stringify({
-        reference: restaurantInfo.photos!=undefined ? restaurantInfo.photos[0].photo_reference : ""
+        reference: restaurantInfo.photos!=undefined ? (restaurantInfo.photos[0] as any).photo_reference : ""
       }),
     });
     const data = await response.json();
@@ -39,7 +39,6 @@ export default function RestaurantBoxComponent({
       method: "POST",
       body: JSON.stringify({
         placeId: restaurantInfo.place_id,
-        photoReference: restaurantInfo.photos!=undefined ? restaurantInfo.photos[0].photo_reference : ""
       }),
     });
     const data = await response.json();
