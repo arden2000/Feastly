@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
-import { AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "@react-icons/all-files/ai/AiFillStar"
 
 export default function RestaurantBoxComponent({
   restaurantInfo,
