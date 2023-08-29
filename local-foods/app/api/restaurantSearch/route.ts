@@ -8,7 +8,7 @@ export async function POST(req: Request) {
   const radius = requestData.radius;
 
   const baseUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${process.env.GOOGLE_MAPS_API_KEY}`;
-  const query = `&keyword=${foodName}%20restaurant`;
+  const query = `&keyword=${foodName}`;
   const location = `&location=${lat}%2C${lng}`;
   const rad = `&radius=${radius}`;
 
