@@ -7,9 +7,11 @@ import { useSearchParams } from 'next/navigation'
 export default function SearchComponent({
   setFoodList,
   setLocationInfo,
+  setSearching
 }: {
   setFoodList: Dispatch<SetStateAction<Array<IFoodInfo>>>;
   setLocationInfo: Dispatch<SetStateAction<ILocationInfo | undefined>>;
+  setSearching: Dispatch<SetStateAction<boolean>>
 }) {
   const [locationInput, setLocationInput] = useState("");
 
@@ -24,6 +26,7 @@ export default function SearchComponent({
   }, []);
 
   const getGPTResponse = async (searchLocation : string) => {
+    setSearching(true);
     try {
       const response = await fetch("/api/generateFoods", {
         method: "POST",
@@ -52,6 +55,8 @@ export default function SearchComponent({
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
+    } finally {
+      setSearching(false)
     }
   }
 
