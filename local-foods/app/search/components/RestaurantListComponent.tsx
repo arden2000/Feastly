@@ -44,7 +44,7 @@ export default function RestaurantListComponent({
     });
 
     const data = await response.json();
-    
+
     console.log("restaurants")
     console.log(data)
 
@@ -62,10 +62,16 @@ export default function RestaurantListComponent({
     if (selectedFood != "") {
       getRestaurants().catch(console.error)
     }
+    if (selectedFood == "") {
+      setRestaurants([])
+    }
   }, [selectedFood]);
 
   return (
-    <div className="flex flex-col justify-start gap-y-6 w-1/3">
+    <div className="flex flex-col grow-0 justify-start gap-y-6 w-1/3">
+      <div className="text-center w-full">
+        <p className="font-sans text-2xl font-bold">Where to Eat</p>
+      </div>
       {restaurants
         .map((restaurant: google.maps.places.PlaceResult) => ((restaurant.rating != undefined && restaurant.rating > 4
           && restaurant.user_ratings_total != undefined && restaurant.user_ratings_total > 50)

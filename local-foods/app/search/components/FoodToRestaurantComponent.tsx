@@ -18,20 +18,16 @@ export default function FoodToRestaurantComponent({
   }, [locationInfo]);
 
   return (
-    <div>
-      <div className="flex flex-row justify-evenly mt-20">
+      <div className="flex flex-row grow-0 w-full justify-evenly mt-20">
         <FoodListComponent
           foodList={foodList}
           setSelectedFood={setSelectedFood}
           selectedFood={selectedFood}
         />
-        {selectedFood != "" ? (
-          <RestaurantListComponent
-            selectedFood={selectedFood}
-            locationInfo={locationInfo}
-          />
-        ) : null}
+        <RestaurantListComponent
+          selectedFood={selectedFood}
+          locationInfo={locationInfo}
+        />
       </div>
-    </div>
   );
 }

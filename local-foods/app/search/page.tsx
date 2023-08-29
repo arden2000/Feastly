@@ -12,23 +12,21 @@ export default function SearchPage() {
 
 
     return (
-        <main className="flex min-h-screen flex-col items-center justify-evenly p-20 	">
-
-            <SearchComponent
-                setFoodList={setFoodList}
-                setLocationInfo={setLocationInfo}
+        <main className="flex min-h-screen shrink-0 grow-0 flex-col items-center p-20 	">
+            <div className="shrink-0">
+                <SearchComponent
+                    setFoodList={setFoodList}
+                    setLocationInfo={setLocationInfo}
                 // locationFromHome={(locationFromHome as string)}
-            />
-
-            <div className="flex flex-col items-center justify-evenly">
+                />
+            </div>
+            <div className="flex flex-col grow-0 h-full w-full shrink-0 mt-20">
                 {locationInfo != undefined ? (
                     <FoodToRestaurantComponent
                         foodList={foodList}
                         locationInfo={locationInfo}
                     />
                 ) : null}
-
-                {/* <p>{JSON.stringify(foodList)}</p> */}
             </div>
         </main>
     );
