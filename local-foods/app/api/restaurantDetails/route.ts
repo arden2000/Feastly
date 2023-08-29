@@ -16,8 +16,8 @@ export async function POST(req: Request) {
     },
   });
 
-  console.log("getting restaurant details");
-  console.log(response);
+  // console.log("getting restaurant details");
+  // console.log(response);
 
   return NextResponse.json(
     {

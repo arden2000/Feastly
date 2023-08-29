@@ -12,14 +12,34 @@ export default function RestaurantBoxComponent({
   const [image, setImage] = useState("/black_image.jpg");
   const [restaurantUrl, setRestaurantUrl] = useState()
 
+  const getRestaurantPhoto = async () => {
+    const response = await fetch("/api/restaurantPhoto", {
+      method: "POST",
+      body: JSON.stringify({
+        reference: restaurantInfo.photos!=undefined ? restaurantInfo.photos[0].photo_reference : ""
+      }),
+    });
+    const data = await response.json();
+
+    setImage(data.result)
+
+    if (response.status !== 200) {
+      throw (
+        data.error ||
+        new Error(`Request failed with status ${response.status}`)
+      );
+    }
+  }
+  // console.log("photo refernce")
+  // console.log(restaurantInfo.photos[0].photo_reference)
+
   const getRestaurantDetails = async () => {
+
     const response = await fetch("/api/restaurantDetails", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify({
         placeId: restaurantInfo.place_id,
+        photoReference: restaurantInfo.photos!=undefined ? restaurantInfo.photos[0].photo_reference : ""
       }),
     });
     const data = await response.json();
@@ -37,7 +57,8 @@ export default function RestaurantBoxComponent({
     }
   }
   useEffect(() => {
-    getRestaurantDetails().catch(console.error)
+    getRestaurantDetails().catch(console.error);
+    getRestaurantPhoto().catch(console.error)
   }, [])
 
   // useEffect(() => {
