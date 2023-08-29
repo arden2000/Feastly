@@ -25,6 +25,19 @@ export default function RestaurantListComponent({
     libraries,
   });
 
+  const compare = (a :  google.maps.places.PlaceResult, b :  google.maps.places.PlaceResult) => {
+    if (a.rating == undefined || b.rating == undefined){
+      return 0;
+    }
+    if ( a.rating < b.rating ){
+      return 1;
+    }
+    if ( a.rating > b.rating ){
+      return -1;
+    }
+    return 0;
+  }
+
   useEffect(() => {
     if (map != undefined) {
       console.log("in map load");
@@ -46,7 +59,7 @@ export default function RestaurantListComponent({
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           console.log("query success");
           console.log(results);
-          setRestaurants(results != null ? results : []);
+          setRestaurants(results != null ? results.sort(compare) : []);
         }
       });
     }
@@ -55,13 +68,9 @@ export default function RestaurantListComponent({
   return (
     <div className="flex flex-col justify-start gap-y-6 w-1/3">
       {restaurants
-        // .filter((restaurant: google.maps.places.PlaceResult) => {
-        //   console.log(restaurant.rating)
-        //   restaurant.rating != undefined && restaurant.rating > 4;
-        // })
-        .map((restaurant: google.maps.places.PlaceResult) => (
-          <RestaurantBoxComponent key={restaurant.place_id} restaurantInfo={restaurant} />
-        ))}
+        .map((restaurant: google.maps.places.PlaceResult) => ((restaurant.rating != undefined && restaurant.rating > 4
+          && restaurant.user_ratings_total != undefined && restaurant.user_ratings_total > 50)
+          ? (<RestaurantBoxComponent key={restaurant.place_id} restaurantInfo={restaurant} />) : null))}
       {isLoaded ? (
         <GoogleMap zoom={10} center={center} onLoad={(map) => setMap(map)} />
       ) : (
