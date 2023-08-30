@@ -30,8 +30,6 @@ export default function RestaurantBoxComponent({
       );
     }
   }
-  // console.log("photo refernce")
-  // console.log(restaurantInfo.photos[0].photo_reference)
 
   const getRestaurantDetails = async () => {
 
@@ -42,9 +40,6 @@ export default function RestaurantBoxComponent({
       }),
     });
     const data = await response.json();
-
-    console.log("restaurant details")
-    console.log(data)
 
     setRestaurantUrl(data.result.result.url);
 

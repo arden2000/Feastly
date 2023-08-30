@@ -10,7 +10,6 @@ export default function SearchPage() {
     const [locationInfo, setLocationInfo] = useState<ILocationInfo>();
     const [foodList, setFoodList] = useState<Array<IFoodInfo>>([]);
     const [searching, setSearching] = useState(false);
-    console.log(searching);
 
     return (
         <main className="flex min-h-screen shrink-0 grow-0 flex-col items-center p-20 	">

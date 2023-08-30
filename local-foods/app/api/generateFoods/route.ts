@@ -57,7 +57,12 @@ export async function POST(req: Request) {
         },
       ],
     });
+<<<<<<< Updated upstream
     console.log(completion.data);
+=======
+    
+    // console.log(completion.data.choices[0].message);
+>>>>>>> Stashed changes
     // res.status(200).json({ result: completion.data.choices[0].text });
     return NextResponse.json(
       {
@@ -70,7 +75,7 @@ export async function POST(req: Request) {
     );
     // res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch (error) {
-    console.log("ERROR");
+    console.log("GPT RESPONSE ERROR");
     // Consider adjusting the error handling logic for your use case
     // if (error.response) {
     //   console.error(error.response.status, error.response.data);

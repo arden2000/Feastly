@@ -24,7 +24,6 @@ export default function FoodBoxComponent({
   const [foodImage, setFoodImage] = useState("/black_image.jpg")
 
   const getFoodImage = async () => {
-    console.log("getting food images")
     const response = await fetch("/api/imageSearch", {
       method: "POST",
       headers: {
@@ -34,7 +33,7 @@ export default function FoodBoxComponent({
     });
 
     const data = await response.json();
-    // console.log(data.result.items[0])
+
     setFoodImage(data.result.items[0].link)
 
     if (response.status !== 200) {

@@ -45,9 +45,6 @@ export default function RestaurantListComponent({
 
     const data = await response.json();
 
-    console.log("restaurants")
-    console.log(data)
-
     setRestaurants(data != null ? data.result.results.sort(compareRestaurants) : []);
 
     if (response.status !== 200) {
