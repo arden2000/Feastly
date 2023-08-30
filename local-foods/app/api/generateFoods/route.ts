@@ -57,12 +57,9 @@ export async function POST(req: Request) {
         },
       ],
     });
-<<<<<<< Updated upstream
     console.log(completion.data);
-=======
     
     // console.log(completion.data.choices[0].message);
->>>>>>> Stashed changes
     // res.status(200).json({ result: completion.data.choices[0].text });
     return NextResponse.json(
       {
