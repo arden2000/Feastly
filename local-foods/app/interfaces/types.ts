@@ -1,10 +1,13 @@
-// interface IFoodList {
-//   local_foods: Array<IFoodInfo>;
-// }
+enum FoodType {
+	Dessert = "dessert",
+	Meal = "meal",
+	Breakfast = "breakfast",
+}
 
 interface IFoodInfo {
   name: string;
   description: string;
+  category: FoodType
 }
 
 interface IGptResponse {
@@ -24,3 +27,4 @@ interface ILocationInfo {
 }
 
 export type { IFoodInfo, ILocationInfo, IGptResponse };
+export {FoodType};

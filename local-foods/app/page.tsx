@@ -13,7 +13,7 @@ export default function Home() {
   function typeNextChar() {
     if (currentCharIndex <= autoTypeTexts[currentTextIndex].length) {
       setCurrentCharIndex(prevValue => prevValue + 1);
-    
+
     } else {
       setCurrentCharIndex(0);
       setCurrentTextIndex((currentTextIndex + 1) % autoTypeTexts.length);

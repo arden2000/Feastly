@@ -39,8 +39,8 @@ export async function POST(req: Request) {
         {
           role: 'system',
           content: `
-          When a user gives you a location recommend 2  local foods from 
-          the location with a 1 sentence description. Include the coordinates 
+          When a user gives you a location recommend 2 local foods in each category of breakfast, meal, and dessert
+          from the location with a 1 sentence description in each category . Include the coordinates 
           of the user's location. Return as a JSON in the 
           following format:
           {
@@ -48,7 +48,10 @@ export async function POST(req: Request) {
             lat: number,
             lng: number
           },
-          local_foods: [{name: name, description: description}]
+          local_foods: {
+            [{name: name, description: description, category: category}],
+            
+          }
           } `
         },
         {
@@ -57,7 +60,7 @@ export async function POST(req: Request) {
         },
       ],
     });
-    console.log(completion.data);
+    console.log(completion.data.choices[0].message);
     // res.status(200).json({ result: completion.data.choices[0].text });
     return NextResponse.json(
       {
