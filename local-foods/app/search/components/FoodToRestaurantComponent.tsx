@@ -1,15 +1,18 @@
 "use client";
 import FoodListComponent from "./FoodListComponent";
 import RestaurantListComponent from "./RestaurantListComponent";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { IFoodInfo, ILocationInfo } from "../../interfaces/types";
 
 export default function FoodToRestaurantComponent({
   foodList,
   locationInfo,
+  setFoodList
 }: {
   foodList: Array<IFoodInfo>;
   locationInfo: ILocationInfo;
+  setFoodList: Dispatch<SetStateAction<Array<IFoodInfo>>>;
+
 }) {
   const [selectedFood, setSelectedFood] = useState("");
 
@@ -23,6 +26,7 @@ export default function FoodToRestaurantComponent({
           foodList={foodList}
           setSelectedFood={setSelectedFood}
           selectedFood={selectedFood}
+          setFoodList={setFoodList}
         />
         <RestaurantListComponent
           selectedFood={selectedFood}

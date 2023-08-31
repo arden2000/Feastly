@@ -36,6 +36,7 @@ export default function SearchPage() {
                     <FoodToRestaurantComponent
                         foodList={foodList}
                         locationInfo={locationInfo}
+                        setFoodList={setFoodList}
                     />
                 ) : null}
             </div>

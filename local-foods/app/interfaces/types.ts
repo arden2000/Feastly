@@ -5,6 +5,7 @@
 interface IFoodInfo {
   name: string;
   description: string;
+  image: string;
 }
 
 interface IGptResponse {
