@@ -2,7 +2,7 @@
 import FoodListComponent from "./FoodListComponent";
 import RestaurantListComponent from "./RestaurantListComponent";
 import { useEffect, useState, Dispatch, SetStateAction } from "react";
-import { IFoodInfo, ILocationInfo } from "../../interfaces/types";
+import { IFoodInfo, ILocationInfo, IRestaurantInfo } from "../../interfaces/types";
 
 export default function FoodToRestaurantComponent({
   foodList,
@@ -15,6 +15,7 @@ export default function FoodToRestaurantComponent({
 
 }) {
   const [selectedFood, setSelectedFood] = useState("");
+  const [restaurantMap, setRestaurantMap] = useState(new Map<string, IRestaurantInfo[]>());
 
   useEffect(() => {
     setSelectedFood("");
@@ -31,6 +32,8 @@ export default function FoodToRestaurantComponent({
         <RestaurantListComponent
           selectedFood={selectedFood}
           locationInfo={locationInfo}
+          restaurantMap={restaurantMap}
+          setRestaurantMap={setRestaurantMap}
         />
       </div>
   );

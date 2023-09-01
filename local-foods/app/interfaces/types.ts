@@ -8,6 +8,15 @@ interface IFoodInfo {
   image: string;
 }
 
+interface IRestaurantInfo {
+  name: string;
+  rating: number;
+  user_ratings_total: number;
+  url: string;
+  image: string;
+}
+
+
 interface IGptResponse {
   local_foods: Array<IFoodInfo>;
   coordinates: {
@@ -24,4 +33,4 @@ interface ILocationInfo {
   }
 }
 
-export type { IFoodInfo, ILocationInfo, IGptResponse };
+export type { IFoodInfo, ILocationInfo, IGptResponse, IRestaurantInfo };
