@@ -8,10 +8,7 @@ interface IFoodInfo {
   image: string;
 }
 
-interface IRestaurantInfo {
-  name: string;
-  rating: number;
-  user_ratings_total: number;
+interface IRestaurantInfo extends google.maps.places.PlaceResult{
   url: string;
   image: string;
 }

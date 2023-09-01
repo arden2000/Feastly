@@ -15,7 +15,7 @@ export default function FoodToRestaurantComponent({
 
 }) {
   const [selectedFood, setSelectedFood] = useState("");
-  const [restaurantMap, setRestaurantMap] = useState(new Map<string, IRestaurantInfo[]>());
+  const [restaurantMap, setRestaurantMap] = useState(new Map<string, Map<string, IRestaurantInfo>>());
 
   useEffect(() => {
     setSelectedFood("");

@@ -11,8 +11,10 @@ export default function RestaurantListComponent({
 }: {
   selectedFood: string;
   locationInfo: ILocationInfo;
-  restaurantMap: Map<string, IRestaurantInfo[]>;
-  setRestaurantMap: Dispatch<SetStateAction<Map<string, IRestaurantInfo[]>>>;
+  restaurantMap: Map<string, Map<string, IRestaurantInfo>>;
+  setRestaurantMap: Dispatch<
+    SetStateAction<Map<string, Map<string, IRestaurantInfo>>>
+  >;
 }) {
   const [restaurants, setRestaurants] = useState<IRestaurantInfo[]>([]);
 
@@ -50,10 +52,18 @@ export default function RestaurantListComponent({
         ? (data.result.results as IRestaurantInfo[]).sort(compareRestaurants)
         : []
     );
+    const sortedRestaurants = (data.result.results as IRestaurantInfo[]).sort(
+      compareRestaurants
+    );
     setRestaurantMap(
       restaurantMap.set(
         selectedFood,
-        (data.result.results as IRestaurantInfo[]).sort(compareRestaurants)
+        new Map(
+          sortedRestaurants.map((obj) => [
+            obj.place_id != undefined ? obj.place_id : "",
+            obj,
+          ])
+        )
       )
     );
     console.log(restaurantMap);
@@ -69,7 +79,8 @@ export default function RestaurantListComponent({
     if (selectedFood != "") {
       const r = restaurantMap.get(selectedFood);
       if (r != undefined) {
-        setRestaurants(r);
+        setRestaurants([...r.values()]);
+        console.log(restaurantMap);
       } else {
         getRestaurants().catch(console.error);
       }
@@ -84,7 +95,7 @@ export default function RestaurantListComponent({
       <div className="text-center w-full">
         <p className="font-sans text-2xl font-bold">Where to Eat</p>
       </div>
-      {restaurants.map((restaurant: google.maps.places.PlaceResult) =>
+      {restaurants.map((restaurant: IRestaurantInfo) =>
         restaurant.rating != undefined &&
         restaurant.rating > 4 &&
         restaurant.user_ratings_total != undefined &&
@@ -92,6 +103,27 @@ export default function RestaurantListComponent({
           <RestaurantBoxComponent
             key={restaurant.place_id}
             restaurantInfo={restaurant}
+            restaurantMap={restaurantMap}
+            setRestaurantProps={(url: string, photo: string): void => {
+              if (photo != null) {
+                restaurant.image = photo;
+              }
+              if (url != null) {
+                restaurant.url = url;
+              }
+              setRestaurantMap(
+                restaurantMap.set(
+                  selectedFood,
+                  new Map(
+                    restaurants.map((obj) => [
+                      obj.place_id != undefined ? obj.place_id : "",
+                      obj,
+                    ])
+                  )
+                )
+              );
+            }}
+            selectedFood={selectedFood}
           />
         ) : null
       )}
