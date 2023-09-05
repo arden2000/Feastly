@@ -50,16 +50,9 @@ export default function RestaurantBoxComponent({
     });
     const data = await response.json();
 
-    setRestaurantUrl(data.result.result.url);
-    setRestaurantProps(data.result.result.url, null);
-
-    // const restaurants = restaurantMap.get(selectedFood);
-    // const r = restaurants != undefined ? restaurants.get(restaurantInfo.name != undefined ? restaurantInfo.name : "") : undefined;
-    // if (r != undefined) {r.url = data.result.result.url}
-    // if (restaurants != undefined) {restaurants.set()}
-    // setRestaurantMap(
-    //   restaurantMap.set(selectedFood, r.set(url, data.result.result.url)
-    // );
+    // setRestaurantUrl(data.result.result.url);
+    // setRestaurantProps(data.result.result.url, null);
+    window.open(data.result.result.url, '_blank', 'noreferrer')
 
     if (response.status !== 200) {
       throw (
@@ -73,28 +66,19 @@ export default function RestaurantBoxComponent({
     } else {
       setImage(restaurantInfo.image)
     }
-    if (restaurantInfo.url == undefined) {
-      getRestaurantDetails().catch(console.error);
-    } else {
-      setRestaurantUrl(restaurantInfo.url)
-    }
   }, []);
-
-  // useEffect(() => {
-  //   setImage(restaurantInfo.photos != undefined ? restaurantInfo.photos[0].getUrl() : "/black_image.jpg");
-  // }, []);
 
   return (
     <div className="flex flex-row gap-4 justify-start">
       <img src={image} alt="me" width="128" height="128" />
       <div className="flex flex-col">
-        <a
-          href={restaurantUrl}
-          target="_blank"
-          className="text-lg font-medium hover:underline"
+        <p
+          onClick={() => {
+            getRestaurantDetails().catch(console.error);           
+          }} className="text-lg font-medium hover:underline"
         >
           {restaurantInfo.name}
-        </a>
+        </p>
         <p>{restaurantInfo.vicinity}</p>
         <p className="flex flex-row items-center">
           <AiFillStar color="orange" />

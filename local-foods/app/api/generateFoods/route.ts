@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         {
           role: 'system',
           content: `
-          When a user gives you a location recommend 2  local foods from 
+          When a user gives you a location recommend 2 local foods from 
           the location with a 1 sentence description. Include the coordinates 
           of the user's location. Return as a JSON in the 
           following format:
