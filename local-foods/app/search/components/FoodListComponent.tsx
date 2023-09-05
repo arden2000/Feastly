@@ -8,10 +8,13 @@ export default function FoodListComponent({
   foodList,
   setSelectedFood,
   selectedFood,
+  setFoodList
 }: {
   foodList: Array<IFoodInfo>;
   setSelectedFood: Dispatch<SetStateAction<string>>;
   selectedFood: string;
+  setFoodList: Dispatch<SetStateAction<Array<IFoodInfo>>>;
+
 }) {
   const [foodType, setFoodType] = useState("");
 
@@ -42,10 +45,11 @@ export default function FoodListComponent({
             <button className={filterButtonStyles(FoodType.Dessert)} onClick={() => setFilter(FoodType.Dessert)}>Dessert</button>
           </div>
         ) : null}
-      {foodList.map((food: IFoodInfo) => (
+      {foodList.map((food: IFoodInfo, i) => (
         (foodType == "" || food.category.toLowerCase() == foodType) ?
-          (<FoodBoxComponent key={food.name} foodInfo={food} setSelectedFood={setSelectedFood} selectedFood={selectedFood} />) : null
-      ))}
+       ( <FoodBoxComponent key={food.name} index={i} setFoodList={setFoodList} foodList={foodList} foodInfo={food} setSelectedFood={setSelectedFood} selectedFood={selectedFood} />)
+        : null))}
+     
     </div>
   );
 }

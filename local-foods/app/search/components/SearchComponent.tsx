@@ -43,7 +43,7 @@ export default function SearchComponent({
           new Error(`Request failed with status ${response.status}`)
         );
       }
-      console.log(data.result);
+      // console.log(data.result);
       let gptResponse: IGptResponse = JSON.parse(data.result);
       setFoodList(gptResponse.local_foods);
       setLocationInfo({

@@ -37,22 +37,22 @@ export async function POST(req: Request) {
       model: "gpt-3.5-turbo",
       messages: [
         {
-          role: 'system',
+          role: "system",
           content: `
-          When a user gives you a location recommend 2 local foods in each category of breakfast, meal, and dessert
-          from the location with a 1 sentence description in each category . Include the coordinates 
-          of the user's location. Return as a JSON in the 
-          following format:
+          When a user gives you a location recommend 6 local foods from the location with a 1 sentence description in each category. 
+          Include the coordinates of the user's location. 
+          Include the category of the food from the following options: breakfast, meal, and dessert.
+          Return as a JSON in the following format:
           {
           coordinates: {
             lat: number,
             lng: number
           },
           local_foods: {
-            [{name: name, description: description, category: category}],
+            [{name: name, description: description, category: category}, {name: name, description: description, category: category}],
             
           }
-          } `
+          } `,
         },
         {
           role: "user",
@@ -60,6 +60,8 @@ export async function POST(req: Request) {
         },
       ],
     });
+    console.log(completion.data);
+
     console.log(completion.data.choices[0].message);
     // res.status(200).json({ result: completion.data.choices[0].text });
     return NextResponse.json(
@@ -73,7 +75,7 @@ export async function POST(req: Request) {
     );
     // res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch (error) {
-    console.log("ERROR");
+    console.log("GPT RESPONSE ERROR");
     // Consider adjusting the error handling logic for your use case
     // if (error.response) {
     //   console.error(error.response.status, error.response.data);
