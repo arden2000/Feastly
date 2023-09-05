@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+  console.log("image search");
   const requestData = await req.json();
   const foodName = requestData.foodName || "";
   const baseUrl = `https://customsearch.googleapis.com/customsearch/v1?cx=${process.env.GOOGLE_CUSTOM_SEARCH_ID}&searchType=image&key=${process.env.GOOGLE_CUSTOM_SEARCH_API_KEY}`;

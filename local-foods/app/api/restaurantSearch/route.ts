@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+  console.log("NEARBY SEARCH REQUEST")
+
   const requestData = await req.json();
   const foodName = requestData.foodName || "";
   const lat = requestData.lat;
@@ -19,9 +21,6 @@ export async function POST(req: Request) {
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
   });
-
-  console.log("getting restaurants");
-  console.log(response);
 
   return NextResponse.json(
     {

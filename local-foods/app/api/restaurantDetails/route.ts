@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
+  console.log("RESTAURANT DETAILS REQUEST")
   const requestData = await req.json();
   const placeId = requestData.placeId 
 
@@ -12,12 +13,8 @@ export async function POST(req: Request) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     },
   });
-
-  // console.log("getting restaurant details");
-  // console.log(response);
 
   return NextResponse.json(
     {
