@@ -55,20 +55,21 @@ export default function FoodBoxComponent({
       );
     }
   };
-  
-  if (foodInfo.image == undefined) {
-    console.log("getting food image")
-    getFoodImage().catch(console.error);
-  }
+
+  useEffect(() => {
+    if (foodInfo.image == undefined) {
+      console.log("getting food image")
+      getFoodImage().catch(console.error);
+    }
+  }, [])
 
   return (
     <div
       onClick={() => setSelectedFood(foodInfo.name)}
-      className={`flex flex-row gap-4 justify-start ${
-        selectedFood === foodInfo.name
+      className={`flex flex-row gap-4 justify-start ${selectedFood === foodInfo.name
           ? "border-2 border-black scale-105"
           : "border"
-      } rounded-lg p-4 hover:scale-105 hover:border-2`}
+        } rounded-lg p-4 hover:scale-105 hover:border-2`}
     >
       <img src={foodImage} alt="me" width="128" height="128" />
       <div className="flex flex-col">
