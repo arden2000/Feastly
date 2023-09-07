@@ -9,6 +9,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'fajitasbg': "url('../mexican-dishes-pepper.jpg')",
+      },
+
+      backgroundSize:{
+        'contain-size': 'contain',
+      },
       animation: {
         text: 'text 5s ease infinite',
       },
