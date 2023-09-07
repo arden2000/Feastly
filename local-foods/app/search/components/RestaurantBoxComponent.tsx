@@ -8,16 +8,15 @@ import { IRestaurantInfo } from "@/app/interfaces/types";
 export default function RestaurantBoxComponent({
   restaurantInfo,
   restaurantMap,
-  setRestaurantProps,
+  setRestaurantPhoto,
   selectedFood,
 }: {
   restaurantInfo: IRestaurantInfo;
   restaurantMap: Map<string, Map<string, IRestaurantInfo>>;
-  setRestaurantProps: any;
+  setRestaurantPhoto: any;
   selectedFood: string;
 }) {
   const [image, setImage] = useState("/black_image.jpg");
-  const [restaurantUrl, setRestaurantUrl] = useState("");
 
   const getRestaurantPhoto = async () => {
     const response = await fetch("/api/restaurantPhoto", {
@@ -32,7 +31,7 @@ export default function RestaurantBoxComponent({
     const data = await response.json();
 
     setImage(data.result);
-    setRestaurantProps(null, data.result);
+    setRestaurantPhoto(data.result);
 
     if (response.status !== 200) {
       throw (
@@ -50,8 +49,6 @@ export default function RestaurantBoxComponent({
     });
     const data = await response.json();
 
-    // setRestaurantUrl(data.result.result.url);
-    // setRestaurantProps(data.result.result.url, null);
     window.open(data.result.result.url, '_blank', 'noreferrer')
 
     if (response.status !== 200) {

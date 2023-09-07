@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  console.log("NEARBY SEARCH REQUEST")
+  console.log("NEARBY SEARCH REQUEST");
 
   const requestData = await req.json();
   const foodName = requestData.foodName || "";
@@ -13,19 +13,26 @@ export async function POST(req: Request) {
   const query = `&keyword=${foodName}`;
   const location = `&location=${lat}%2C${lng}`;
   const rad = `&radius=${radius}`;
+  try {
+    const response = await fetch(`${baseUrl}${query}${location}${rad}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-  const response = await fetch(`${baseUrl}${query}${location}${rad}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-  });
-
-  return NextResponse.json(
-    {
-      result: await response.json(),
-    },
-    { status: 200 }
-  );
+    return NextResponse.json(
+      {
+        result: await response.json(),
+      },
+      { status: response.status }
+    );
+  } catch (error) {
+    console.log("Nearby Search Error");
+    console.log(error);
+    return NextResponse.json({
+      status: 500,
+      error: { message: "Nearby Search Error" },
+    });
+  }
 }

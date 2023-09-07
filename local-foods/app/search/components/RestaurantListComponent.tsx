@@ -97,20 +97,15 @@ export default function RestaurantListComponent({
       </div>
       {restaurants.map((restaurant: IRestaurantInfo) =>
         restaurant.rating != undefined &&
-        restaurant.rating > 4 &&
-        restaurant.user_ratings_total != undefined &&
-        restaurant.user_ratings_total > 50 ? (
+          restaurant.rating > 4 &&
+          restaurant.user_ratings_total != undefined &&
+          restaurant.user_ratings_total > 50 ? (
           <RestaurantBoxComponent
             key={restaurant.place_id}
             restaurantInfo={restaurant}
             restaurantMap={restaurantMap}
-            setRestaurantProps={(url: string, photo: string): void => {
-              if (photo != null) {
-                restaurant.image = photo;
-              }
-              if (url != null) {
-                restaurant.url = url;
-              }
+            setRestaurantPhoto={(photo: string): void => {
+              restaurant.image = photo;
               setRestaurantMap(
                 restaurantMap.set(
                   selectedFood,
