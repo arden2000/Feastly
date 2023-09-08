@@ -10,9 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'fajitasbg': "url('../mexican-dishes-pepper.jpg')",
+        'foodbg': "url('../chinesefood.jpg')",
       },
 
+      backgroundColor: {
+        'ff3131': '#ff3131', 
+        'efe5da': '#efe5da',
+      },
+      textColor:{
+        'ff3131': '#ff3131',
+      },
       backgroundSize:{
         'contain-size': 'contain',
       },
