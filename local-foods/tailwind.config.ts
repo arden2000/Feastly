@@ -14,10 +14,15 @@ const config: Config = {
       },
 
       backgroundColor: {
-        'ff3131': '#ff3131', 
+        /* red button color*/
+        'ff3131': '#ff3131',
+        /* beige background*/
         'efe5da': '#efe5da',
+        /* Light red background color */
+        'F2CCCC': '#F2CCCC',
       },
       textColor:{
+        /** red text */
         'ff3131': '#ff3131',
       },
       backgroundSize:{

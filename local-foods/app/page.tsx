@@ -101,7 +101,78 @@ export default function Home() {
         </div>
       </div>
       {/*3rd Section: the Features section */}
-      <div className="flex flex-row h-[600px] w-screen relative bg-gray-400"></div>
+      <div className="h-[800px] w-screen relative bg-F2CCCC">
+        <h3 className=" pl-10 w-screen text-center relative text-black text-[50px] font-bold">
+          FEATURES
+        </h3>
+
+        {/* Timeline wrapped in this div */}
+        <div className="max-w-4xl mx-auto mt-auto">
+          {/* Timeline item 1 */}
+          <div className="relative py-8">
+            <div className="mx-auto max-w-xs absolute top-0 left-1/2 transform -translate-x-1/2 -mt-3"></div>
+            <div className="bg-white p-6 rounded-lg shadow-lg ml-8">
+              <h2 className="text-xl font-semibold mb-2 flex">
+                Discover Culinary Treasures Effortlessly
+              </h2>
+              <div className="flex flex-col relative justify-end">
+                <p className="flex flex-row relative justify-end text-gray-600">
+                  Our AI-powered app helps you find and savor famous local
+                  dishes and desserts while on the go. From street vendors to
+                  quaint eateries, we've got your cravings covered.{" "}
+                </p>
+              </div>
+            </div>
+            <div className="absolute top-300 left-1/2 transform -translate-x-1/2 w-1 bg-gray-300 h-full"></div>
+          </div>
+
+          {/* Timeline item 2 */}
+          <div className="relative py-8">
+            <div className="mx-auto max-w-xs absolute top-0 left-1/2 transform -translate-x-1/2 -mt-3">
+              <div className="w-3 h-3 bg-ff3131 rounded-full border-4 border-white"></div>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-lg ml-8">
+              <span className="text-ff3131  font-semibold text-sm italic mt-2">
+                Coming Soon!
+              </span>
+              <h2 className="text-xl font-semibold mb-2">
+                Personalized Reccommendations!
+              </h2>
+              <p className="flex flex-row relative justify-end text-gray-600">
+                Tailor your food exploration by setting dietary preferences,
+                flavor profiles, and dining preferences, whether you prefer fine
+                dining or local street vendors. Our AI learns and refines its
+                recommendations with each use, ensuring faster, tailored
+                selections that cater to your evolving tastes. Enjoy a
+                continuously customized culinary journey.
+              </p>
+            </div>
+            <div className="absolute top-100 left-1/2 transform -translate-x-1/2 w-1 bg-gray-300 h-full"></div>
+          </div>
+
+          {/* Timeline item 3 */}
+          <div className="relative py-8">
+            <div className="mx-auto max-w-xs absolute top-0 left-1/2 transform -translate-x-1/2 -mt-3">
+              <div className="w-3 h-3 bg-ff3131 rounded-full border-4 border-white"></div>
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-lg ml-8">
+              <span className="text-ff3131 font-semibold text-sm mt-2 italic">
+                Coming Soon!
+              </span>
+              <h2 className="text-xl font-semibold justify-left mb-2">
+                Discover like-minded foodies!
+              </h2>
+              <p className="flex flex-col relative justify-end text-gray-600">
+                Expand your culinary horizons by incorporating fellow foodies'
+                experiences and recommendations into your flavor profile. Share
+                and cherish your memorable dining adventures, and connect with
+                like-minded travelers to embark on delightful culinary journeys
+                together while exploring new destinations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
