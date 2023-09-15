@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { IFoodInfo, ILocationInfo } from "./interfaces/types";
-import foodbg from "../chinesefood.jpg";
 
 export default function Home() {
   const [homeLocationInput, setHomeLocationInput] = useState("");
@@ -36,7 +35,7 @@ export default function Home() {
       <div className="flex flex-row h-[600px] w-screen relative justify-between">
         {/*This div is for the eat like a local and find foods button */}
         <div className="flex flex-col pl-32 mt-5 w-[350px] relative">
-          <h3 className="mt-20 mb-8 w-[765px] relative text-ff3131 text-[80px] font-bold">
+          <h3 className="mt-20 mb-8 w-[765px] relative text-ff3131 text-[70px] font-bold">
             Eat like a local Anywhere you go!
           </h3>
           <form>
@@ -65,7 +64,7 @@ export default function Home() {
           </form>
         </div>
 
-        <div className="mr-20 h-[600px] w-[600px] relative bg-foodbg bg-cover"></div>
+        <div className="mt-16 mr-20 h-[450px] w-[450px] relative bg-foodbg bg-cover"></div>
       </div>
       {/*2nd section: the about section, 2 images of screens of AI program */}
       <div className="h-[600px] w-screen relative bg-efe5da">
@@ -98,47 +97,49 @@ export default function Home() {
             {/* <div className="flex flex-row justify-center mt-5">
             </div> */}
           </div>
+          <div>
+            <div className="mt-16 mr-20 h-[200px] w-[450px] relative bg-siteimg1 bg-cover"></div>
+          </div>
         </div>
       </div>
       {/*3rd Section: the Features section */}
-      <div className="h-[800px] w-screen relative bg-F2CCCC">
-        <h3 className=" pl-10 w-screen text-center relative text-black text-[50px] font-bold">
-          FEATURES
+      <h3 className="w-screen text-center relative text-ff3131 text-[50px] font-bold">
+          EXPLORE OUR FEATURES
         </h3>
-
-        {/* Timeline wrapped in this div */}
-        <div className="max-w-4xl mx-auto mt-auto">
-          {/* Timeline item 1 */}
-          <div className="relative py-8">
-            <div className="mx-auto max-w-xs absolute top-0 left-1/2 transform -translate-x-1/2 -mt-3"></div>
-            <div className="bg-white p-6 rounded-lg shadow-lg ml-8">
-              <h2 className="text-xl font-semibold mb-2 flex">
-                Discover Culinary Treasures Effortlessly
-              </h2>
-              <div className="flex flex-col relative justify-end">
-                <p className="flex flex-row relative justify-end text-gray-600">
-                  Our AI-powered app helps you find and savor famous local
-                  dishes and desserts while on the go. From street vendors to
-                  quaint eateries, we've got your cravings covered.{" "}
-                </p>
-              </div>
+      <div className="container  mx-auto w-full h-full">
+        <div className="relative wrap overflow-hidden p-10 h-full">
+          <div className="mb-8 flex justify-between items-center w-full right-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto font-semibold text-lg text-white"></h1>
             </div>
-            <div className="absolute top-300 left-1/2 transform -translate-x-1/2 w-1 bg-gray-300 h-full"></div>
+            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <h3 className="mb-3 font-bold text-gray-800 text-xl">
+                Discover Culinary Treasures Effortlessly
+              </h3>
+              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
+                {" "}
+                Our AI-powered app helps you find and savor famous local dishes
+                and desserts while on the go. From street vendors to quaint
+                eateries, we've got your cravings covered.
+              </p>
+            </div>
           </div>
 
-          {/* Timeline item 2 */}
-          <div className="relative py-8">
-            <div className="mx-auto max-w-xs absolute top-0 left-1/2 transform -translate-x-1/2 -mt-3">
-              <div className="w-3 h-3 bg-ff3131 rounded-full border-4 border-white"></div>
+          <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto text-white font-semibold text-lg"></h1>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg ml-8">
-              <span className="text-ff3131  font-semibold text-sm italic mt-2">
+            <div className="order-1 bg-red-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
+              <span className="text-white font-semibold text-sm mt-2 italic">
                 Coming Soon!
               </span>
-              <h2 className="text-xl font-semibold mb-2">
+              <h3 className="mb-3 font-bold text-white text-xl">
                 Personalized Reccommendations!
-              </h2>
-              <p className="flex flex-row relative justify-end text-gray-600">
+              </h3>
+              <p className="text-sm font-medium leading-snug tracking-wide text-white text-opacity-100">
+                {" "}
                 Tailor your food exploration by setting dietary preferences,
                 flavor profiles, and dining preferences, whether you prefer fine
                 dining or local street vendors. Our AI learns and refines its
@@ -147,22 +148,21 @@ export default function Home() {
                 continuously customized culinary journey.
               </p>
             </div>
-            <div className="absolute top-100 left-1/2 transform -translate-x-1/2 w-1 bg-gray-300 h-full"></div>
           </div>
 
-          {/* Timeline item 3 */}
-          <div className="relative py-8">
-            <div className="mx-auto max-w-xs absolute top-0 left-1/2 transform -translate-x-1/2 -mt-3">
-              <div className="w-3 h-3 bg-ff3131 rounded-full border-4 border-white"></div>
+          <div className="mb-8 flex justify-between items-center w-full right-timeline">
+            <div className="order-1 w-5/12"></div>
+            <div className="z-20 flex items-center order-1 bg-gray-800 shadow-xl w-8 h-8 rounded-full">
+              <h1 className="mx-auto font-semibold text-lg text-white"></h1>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg ml-8">
+            <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
               <span className="text-ff3131 font-semibold text-sm mt-2 italic">
                 Coming Soon!
               </span>
-              <h2 className="text-xl font-semibold justify-left mb-2">
+              <h3 className="mb-3 font-bold text-gray-800 text-xl">
                 Discover like-minded foodies!
-              </h2>
-              <p className="flex flex-col relative justify-end text-gray-600">
+              </h3>
+              <p className="text-sm leading-snug tracking-wide text-gray-900 text-opacity-100">
                 Expand your culinary horizons by incorporating fellow foodies'
                 experiences and recommendations into your flavor profile. Share
                 and cherish your memorable dining adventures, and connect with
@@ -173,6 +173,40 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <footer className="w-11/12 bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-row justify-between space-x-40">
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            © 2023{" "}
+            <a href="https://flowbite.com/" className="hover:underline">
+              Feastly
+            </a>
+            . All Rights Reserved.
+          </span>
+          <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6 ">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a href="#" className="mr-4 hover:underline md:mr-6">
+                Licensing
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:underline">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </main>
   );
 }

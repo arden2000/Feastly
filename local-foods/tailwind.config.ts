@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       backgroundImage: {
         'foodbg': "url('../chinesefood.jpg')",
+        'siteimg1': "url('../websiteimg1.png')",
       },
 
       backgroundColor: {
