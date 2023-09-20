@@ -23,27 +23,25 @@ export default function AutoTypeSearchLinkComponent() {
   }, [currentCharIndex])
 
   return (
-    <div>
-      <form>
+      <form className="flex flex-col">
         <input
           type="text"
           name="location"
           placeholder={autoTypeTexts[currentTextIndex].slice(0, currentCharIndex)}
           value={homeLocationInput}
           onChange={(e) => setHomeLocationInput(e.target.value)}
-          className="rounded-lg bg-white border-2 border-black p-3 w-full"
+          className="rounded-lg bg-white border-2 border-black p-3 w-2/3"
         />
         <Link href={{
           pathname: '/search',
           query: { homeLocation: homeLocationInput },
         }}>
           <button
-            className="rounded-lg text-white bg-black p-1.5 w-full mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black"
+            className="rounded-lg text-lg font-semibold text-white bg-bright-orange py-3 px-1.5 w-1/3 mt-2 hover:bg-white hover:text-bright-orange border-white border-2 hover:border-bright-orange"
           >
-            Find Foods
+            FIND FOODS
           </button>
         </Link>
       </form>
-    </div>
   );
 }

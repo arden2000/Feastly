@@ -9,23 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'foodbg': "url('../chinesefood.jpg')",
-        'siteimg1': "url('../websiteimg1.png')",
+      colors: {
+        'bright-orange': '#ff3131',
       },
-
       backgroundColor: {
-        /* red button color*/
-        'ff3131': '#ff3131',
-        /* beige background*/
-        'efe5da': '#efe5da',
         /* Light red background color */
         'F2CCCC': '#F2CCCC',
       },
-      textColor:{
-        /** red text */
-        'ff3131': '#ff3131',
-      },
+
       backgroundSize:{
         'contain-size': 'contain',
       },

@@ -8,57 +8,44 @@ import AutoTypeSearchLinkComponent from "./components/AutoTypeSearchLinkComponen
 export default function Home() {
 
   return (
-    <main className="flex flex-col items-center justify-evenly min-h-screen">
+    <main className="flex flex-col items-center justify-evenly min-h-screen gap-y-36 w-screen">
       {/*1st section, tagline, and form to go over to the AI page*/}
-      <div className="flex flex-row h-[600px] w-screen relative justify-between">
+      <div className="flex flex-row w-screen relative justify-evenly w-full mt-20 ">
         {/*This div is for the eat like a local and find foods button */}
-        <div className="flex flex-col pl-32 mt-5 w-[350px] relative">
-          <h3 className="mt-20 mb-8 w-[765px] relative text-ff3131 text-[70px] font-bold">
-            Eat like a local Anywhere you go!
+        <div className="flex flex-col max-w-1/2 gap-y-6 justify-center">
+          <h3 className="text-bright-orange text-6xl font-bold">
+            Eat like a local<br/> anywhere you go!
           </h3>
           <AutoTypeSearchLinkComponent />
         </div>
-
-        <div className="mt-16 mr-20 h-[450px] w-[450px] relative bg-foodbg bg-cover"></div>
+        <img src="/restaurant-vector.jpeg" className="h-[450px] max-w-1/2" />
       </div>
       {/*2nd section: the about section, 2 images of screens of AI program */}
-      <div className="h-[600px] w-screen relative bg-efe5da">
-        <h3 className=" pl-10 w-screen text-center relative text-ff3131 text-[50px] font-bold">
-          HOW DOES IT WORK?
+      <div className="h-[600px] w-screen relative bg-white">
+        <h3 className=" pl-10 w-screen text-center relative text-bright-orange text-4xl font-bold">
+          Your Ultimate Travel Food Companion
         </h3>
-        <div className="flex flex-row relative justify-between mb-16">
-          <div className="flex flex-col relative pl-1 items-center">
-            <p className="pl-10 mt-12 w-[765px] text-center text-2xl">
-              Uncover the magic behind our AI-driven culinary companion in three
-              simple steps.
+        <div className="flex flex-row justify-evenly mb-16 w-full content-center">
+          <div className="flex flex-col justify-center w-1/2">
+            <p className="text-2xl font-semibold">
+              Never miss out on local flavor again
             </p>
-            <p className="pl-10 mt-6 w-[765px] text-center text-2xl">
-              First, share your location to allow our AI to pinpoint the
-              culinary treasures nearby.
+            <p className="mt-6 text-xl w-2/3">
+              Give us any location in the world and we will tell you all the best local and traditional foods you must try
             </p>
-            <p className="pl-10 mt-6 w-[765px] text-center text-2xl">
-              Next, reveal your food cravings and dietary needs, giving our AI
-              the green light to whip up a personalized menu that’ll satisfy
-              your every need.
-            </p>
-            <p className="pl-10 mt-6 w-[765px] text-center text-2xl">
-              Finally, brace yourself for the mouthwatering journey ahead. No
-              more stressing about where and what to eat. Our AI knows the best
-              food for any event.
-            </p>
-            <button className="rounded-lg mt-3 text-white bg-ff3131 p-1.5 w-40 mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black">
+            <button className="rounded-lg text-white bg-bright-orange p-1.5 w-40 mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black">
               LETS GO
             </button>
             {/* <div className="flex flex-row justify-center mt-5">
             </div> */}
           </div>
-          <div>
-            <div className="mt-16 mr-20 h-[200px] w-[450px] relative bg-siteimg1 bg-cover"></div>
-          </div>
+
+          <img src="/restaurant-vector.jpeg" className="h-96" />
+
         </div>
       </div>
       {/*3rd Section: the Features section */}
-      <h3 className="w-screen text-center relative text-ff3131 text-[50px] font-bold">
+      <h3 className="w-screen text-center relative text-bright-orange text-[50px] font-bold">
         EXPLORE OUR FEATURES
       </h3>
       <div className="container  mx-auto w-full h-full">
@@ -111,7 +98,7 @@ export default function Home() {
               <h1 className="mx-auto font-semibold text-lg text-white"></h1>
             </div>
             <div className="order-1 bg-gray-400 rounded-lg shadow-xl w-5/12 px-6 py-4">
-              <span className="text-ff3131 font-semibold text-sm mt-2 italic">
+              <span className="text-bright-orange font-semibold text-sm mt-2 italic">
                 Coming Soon!
               </span>
               <h3 className="mb-3 font-bold text-gray-800 text-xl">
@@ -128,40 +115,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <footer className="w-11/12 bg-white rounded-lg shadow m-4 dark:bg-gray-800">
-        <div className="w-full mx-auto max-w-screen-xl p-4 flex flex-row justify-between space-x-40">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2023{" "}
-            <a href="https://flowbite.com/" className="hover:underline">
-              Feastly
-            </a>
-            . All Rights Reserved.
-          </span>
-          <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-            <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6 ">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="mr-4 hover:underline md:mr-6">
-                Licensing
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
     </main>
   );
 }
