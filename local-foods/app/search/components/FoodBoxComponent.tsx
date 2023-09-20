@@ -67,7 +67,7 @@ export default function FoodBoxComponent({
     <div
       onClick={() => setSelectedFood(foodInfo.name)}
       className={`flex flex-row gap-4 justify-start ${selectedFood === foodInfo.name
-          ? "border-2 border-black scale-105"
+          ? "border-2 border-bright-orange scale-105"
           : "border"
         } rounded-lg p-4 hover:scale-105 hover:border-2`}
     >

@@ -1,13 +1,15 @@
 import Link from "next/link"
-import { PiBowlFoodDuotone } from "react-icons/pi";
+import { BiRestaurant } from "react-icons/bi";
+
 
 export default function NavBarComponent() {
   return (
-    <div className="container w-full mx-auto sm:flex sm:items-center sm:justify-between w-">
+    <div className="w-full mx-auto sm:flex sm:items-left sm:justify-between py-5 bg-bright-orange">
       <Link href='/'>
-        <header className="flex flex-row items-center mt-5">
-          <PiBowlFoodDuotone size={40} />
-          <p className="text-2xl font-semibold">Local Eats</p>
+        <header className="ml-40 flex flex-row items-center">
+          
+          <p className="text-4xl text-white">FEASTLY</p>
+          <BiRestaurant size={40}/>
         </header>
       </Link>
     </div>

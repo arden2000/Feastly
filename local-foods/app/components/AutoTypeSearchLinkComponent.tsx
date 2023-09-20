@@ -38,8 +38,8 @@ export default function AutoTypeSearchLinkComponent() {
           query: { homeLocation: homeLocationInput },
         }}>
           <button
-            className="rounded-lg text-white bg-black p-1.5 w-full mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black"
-          >
+            className="rounded-lg text-lg font-semibold text-white bg-bright-orange p-1.5 w-full mt-2 hover:bg-white hover:text-bright-orange border-white border-2 hover:border-bright-orange"
+            >
             Find Foods
           </button>
         </Link>
