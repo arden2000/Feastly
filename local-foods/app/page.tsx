@@ -1,33 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { useState, useEffect } from "react";
-import { IFoodInfo, ILocationInfo } from "./interfaces/types";
+import AutoTypeSearchLinkComponent from "./components/AutoTypeSearchLinkComponent"
 
 export default function Home() {
-  const [homeLocationInput, setHomeLocationInput] = useState("");
-  const autoTypeTexts = [
-    "Rome",
-    "New York",
-    "Tokyo",
-    "Buenos Aires",
-    "Istanbul",
-  ].map((city) => city + " ".repeat(15));
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
-
-  function typeNextChar() {
-    if (currentCharIndex <= autoTypeTexts[currentTextIndex].length) {
-      setCurrentCharIndex((prevValue) => prevValue + 1);
-    } else {
-      setCurrentCharIndex(0);
-      setCurrentTextIndex((currentTextIndex + 1) % autoTypeTexts.length);
-    }
-  }
-  useEffect(() => {
-    const interval = setInterval(typeNextChar, 150);
-    return () => clearInterval(interval);
-  }, [currentCharIndex]);
 
   return (
     <main className="flex flex-col items-center justify-evenly min-h-screen">
@@ -38,30 +16,7 @@ export default function Home() {
           <h3 className="mt-20 mb-8 w-[765px] relative text-ff3131 text-[70px] font-bold">
             Eat like a local Anywhere you go!
           </h3>
-          <form>
-            <input
-              type="text"
-              name="location"
-              placeholder={autoTypeTexts[currentTextIndex].slice(
-                0,
-                currentCharIndex
-              )}
-              value={homeLocationInput}
-              onChange={(e) => setHomeLocationInput(e.target.value)}
-              required
-              className="rounded-lg bg-white border-2 border-black p-3 pl-16 w-full"
-            />
-            <Link
-              href={{
-                pathname: "/search",
-                query: { homeLocation: homeLocationInput },
-              }}
-            >
-              <button className="rounded-lg text-white bg-ff3131 p-1.5 w-full mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black">
-                Find Foods
-              </button>
-            </Link>
-          </form>
+          <AutoTypeSearchLinkComponent />
         </div>
 
         <div className="mt-16 mr-20 h-[450px] w-[450px] relative bg-foodbg bg-cover"></div>
@@ -104,8 +59,8 @@ export default function Home() {
       </div>
       {/*3rd Section: the Features section */}
       <h3 className="w-screen text-center relative text-ff3131 text-[50px] font-bold">
-          EXPLORE OUR FEATURES
-        </h3>
+        EXPLORE OUR FEATURES
+      </h3>
       <div className="container  mx-auto w-full h-full">
         <div className="relative wrap overflow-hidden p-10 h-full">
           <div className="mb-8 flex justify-between items-center w-full right-timeline">

@@ -5,7 +5,14 @@
 interface IFoodInfo {
   name: string;
   description: string;
+  image: string;
 }
+
+interface IRestaurantInfo extends google.maps.places.PlaceResult{
+  url: string;
+  image: string;
+}
+
 
 interface IGptResponse {
   local_foods: Array<IFoodInfo>;
@@ -23,4 +30,4 @@ interface ILocationInfo {
   }
 }
 
-export type { IFoodInfo, ILocationInfo, IGptResponse };
+export type { IFoodInfo, ILocationInfo, IGptResponse, IRestaurantInfo };

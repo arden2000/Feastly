@@ -8,10 +8,16 @@ export default function FoodBoxComponent({
   foodInfo,
   setSelectedFood,
   selectedFood,
+  setFoodList,
+  index,
+  foodList,
 }: {
   foodInfo: IFoodInfo;
   setSelectedFood: Dispatch<SetStateAction<string>>;
   selectedFood: string;
+  setFoodList: Dispatch<SetStateAction<Array<IFoodInfo>>>;
+  index: number;
+  foodList: Array<IFoodInfo>;
 }) {
   // const [style, setStyle] = useState("");
 
@@ -21,10 +27,9 @@ export default function FoodBoxComponent({
   //   setStyle("border");
   // }
 
-  const [foodImage, setFoodImage] = useState("/black_image.jpg")
+  const [foodImage, setFoodImage] = useState("/black_image.jpg");
 
   const getFoodImage = async () => {
-    console.log("getting food images")
     const response = await fetch("/api/imageSearch", {
       method: "POST",
       headers: {
@@ -34,18 +39,29 @@ export default function FoodBoxComponent({
     });
 
     const data = await response.json();
-    // console.log(data.result.items[0])
-    setFoodImage(data.result.items[0].link)
 
+    setFoodImage(data.result.items[0].link);
+    setFoodList(
+      foodList.map((f, i) => {
+        if (i == index) {
+          f.image = foodImage;
+        }
+        return f;
+      })
+    );
     if (response.status !== 200) {
       throw (
-        data.error ||
-        new Error(`Request failed with status ${response.status}`)
+        data.error || new Error(`Request failed with status ${response.status}`)
       );
     }
-  }
+  };
 
-  getFoodImage().catch(console.error)
+  useEffect(() => {
+    if (foodInfo.image == undefined) {
+      console.log("getting food image")
+      getFoodImage().catch(console.error);
+    }
+  }, [])
 
   return (
     <div

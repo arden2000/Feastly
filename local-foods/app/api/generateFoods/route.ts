@@ -39,7 +39,7 @@ export async function POST(req: Request) {
         {
           role: 'system',
           content: `
-          When a user gives you a location recommend 2  local foods from 
+          When a user gives you a location recommend 5 local foods from 
           the location with a 1 sentence description. Include the coordinates 
           of the user's location. Return as a JSON in the 
           following format:
@@ -58,6 +58,8 @@ export async function POST(req: Request) {
       ],
     });
     console.log(completion.data);
+    
+    // console.log(completion.data.choices[0].message);
     // res.status(200).json({ result: completion.data.choices[0].text });
     return NextResponse.json(
       {
@@ -70,7 +72,7 @@ export async function POST(req: Request) {
     );
     // res.status(200).json({ result: completion.data.choices[0].message.content });
   } catch (error) {
-    console.log("ERROR");
+    console.log("GPT RESPONSE ERROR");
     // Consider adjusting the error handling logic for your use case
     // if (error.response) {
     //   console.error(error.response.status, error.response.data);
