@@ -3,10 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
-import AutoTypeSearchLinkComponent from "./components/AutoTypeSearchLinkComponent"
+import AutoTypeSearchLinkComponent from "./components/AutoTypeSearchLinkComponent";
 
 export default function Home() {
-
   return (
     <main className="flex flex-col items-center justify-evenly min-h-screen gap-y-36 w-screen">
       {/*1st section, tagline, and form to go over to the AI page*/}
@@ -14,7 +13,8 @@ export default function Home() {
         {/*This div is for the eat like a local and find foods button */}
         <div className="flex flex-col max-w-1/2 gap-y-6 justify-center">
           <h3 className="text-bright-orange text-6xl font-bold">
-            Eat like a local<br/> anywhere you go!
+            Eat like a local
+            <br /> anywhere you go!
           </h3>
           <AutoTypeSearchLinkComponent />
         </div>
@@ -31,7 +31,8 @@ export default function Home() {
               Never miss out on local flavor again
             </p>
             <p className="mt-6 text-xl w-2/3">
-              Give us any location in the world and we will tell you all the best local and traditional foods you must try
+              Give us any location in the world and we will tell you all the
+              best local and traditional foods you must try
             </p>
             <button className="rounded-lg text-white bg-bright-orange p-1.5 w-40 mt-2 hover:bg-white hover:text-black border-white border-2 hover:border-black">
               LETS GO
@@ -41,7 +42,6 @@ export default function Home() {
           </div>
 
           <img src="/restaurant-vector.jpeg" className="h-96" />
-
         </div>
       </div>
       {/*3rd Section: the Features section */}
